@@ -15,6 +15,7 @@ function shell(state: MegaMenuState): CSSProperties {
     color: state.foreground,
     fontFamily: state.fontFamily,
     opacity: state.disabled ? 0.55 : 1,
+    transition: state.motion ? "opacity 0.2s ease" : undefined,
   };
 }
 
@@ -40,8 +41,8 @@ export default function LivePreview({ state }: { state: MegaMenuState }) {
           disabled={state.disabled}
           aria-expanded={isExpanded}
           aria-controls={panelId}
-          className="rounded-full px-4 py-2 text-sm font-bold transition"
-          style={{ background: state.accent, color: "#020617" }}
+          className="rounded-full px-4 py-2 text-sm font-bold"
+          style={{ background: state.accent, color: "#020617", transition: state.motion ? "opacity 0.15s ease, transform 0.15s ease" : undefined }}
         >
           {state.label}
         </button>
