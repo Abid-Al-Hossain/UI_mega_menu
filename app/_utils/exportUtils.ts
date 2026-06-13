@@ -68,7 +68,7 @@ export default function MegaMenuComponent() {
         color: state.foreground,
         fontFamily: state.fontFamily,
         opacity: state.disabled ? 0.55 : 1,
-        transition: state.motion ? "opacity 0.2s ease" : "none",
+        transition: state.transitionDuration > 0 ? "$1" : "none",
       }}
     >
       <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
@@ -79,7 +79,7 @@ export default function MegaMenuComponent() {
           aria-expanded={expanded}
           aria-controls={panelId}
           onClick={() => setExpanded((value) => !value)}
-          style={{ border: 0, borderRadius: 999, padding: "10px 16px", background: state.accent, color: "#020617", fontWeight: 800, transition: state.motion ? "opacity 0.15s ease, transform 0.15s ease" : "none" }}
+          style={{ border: 0, borderRadius: 999, padding: "10px 16px", background: state.accent, color: "#020617", fontWeight: 800, transition: state.transitionDuration > 0 ? "$1" : "none" }}
         >
           {state.label}
         </button>
