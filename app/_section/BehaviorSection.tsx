@@ -8,10 +8,14 @@ import type { MegaMenuState } from "../types";
 type Props = { state: MegaMenuState; update: <K extends keyof MegaMenuState>(key: K, value: MegaMenuState[K]) => void };
 
 export default function BehaviorSection({ state, update }: Props) {
-  return <SectionCard title="Behavior" subtitle="Behavior controls for native mega generation."><Select label="Trigger" value={state.triggerMode} options={[
-  "hover",
-  "click",
-  "focus"
-]} onChange={(value) => update("triggerMode", value)} />
-<Switch label="Disabled" checked={state.disabled} onChange={(value) => update("disabled", value)} /></SectionCard>;
+  return (
+    <div className="space-y-4">
+      <SectionCard title="Trigger" subtitle="How the mega menu opens.">
+        <Select label="Trigger mode" value={state.triggerMode} options={["hover", "click", "focus"]} onChange={(value) => update("triggerMode", value)} />
+      </SectionCard>
+      <SectionCard title="Content" subtitle="Mega menu panel content options.">
+        <Switch label="Featured panel" checked={state.featuredPanel} onChange={(value) => update("featuredPanel", value)} />
+      </SectionCard>
+    </div>
+  );
 }

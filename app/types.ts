@@ -1,4 +1,4 @@
-export type SectionId = "presets" | "basics" | "metadata" | "content" | "items" | "behavior" | "layout" | "placement" | "sizing" | "colors" | "border" | "radius" | "shadow" | "typography" | "transitions" | "focus-ring" | "states" | "accessibility";
+export type SectionId = "presets" | "basics" | "metadata" | "content" | "items" | "behavior" | "layout" | "placement" | "sizing" | "colors" | "border" | "radius" | "shadow" | "typography" | "transitions" | "focus-ring" | "states" | "disabled" | "accessibility";
 
 export type MegaMenuState = {
   title: string;
@@ -54,11 +54,18 @@ export type MegaMenuState = {
   muted: string;
   accent: string;
   border: string;
+  actionText: string;
   titleSize: number;
   bodySize: number;
   fontWeight: number;
   previewState: "default" | "hover" | "focus" | "active" | "open" | "closed" | "selected" | "loading" | "empty" | "error" | "success";
   disabled: boolean;
+  disabledOpacity: number;
+  disabledCursor: "not-allowed" | "default" | "pointer";
+  disabledUseCustomColors: boolean;
+  disabledBg: string;
+  disabledText: string;
+  disabledBorder: string;
   role: "navigation";
   columnCount: number;
   groupCount: number;
@@ -66,6 +73,37 @@ export type MegaMenuState = {
   triggerMode: "hover" | "click" | "focus";
   mobileMode: string;
   side: "top" | "right" | "bottom" | "left";
+  // Panel surface
+  panelBg: string;
+  panelBorder: string;
+  panelRadius: number;
+  panelShadow: string;
+  columnDividerColor: string;
+  // Links
+  linkColor: string;
+  linkHoverColor: string;
+  linkHoverBg: string;
+  // Category headers
+  categoryHeaderColor: string;
+  categoryHeaderSize: number;
+  categoryHeaderWeight: number;
+  // Featured panel
+  featuredBg: string;
+  featuredText: string;
+  featuredBorder: string;
+  featuredRadius: number;
+  // Badge & icon
+  badgeBg: string;
+  badgeText: string;
+  iconColor: string;
+  iconSize: number;
+  // Footer
+  footerBg: string;
+  footerBorder: string;
+  footerText: string;
+  // Trigger
+  triggerHoverBg: string;
+  triggerActiveColor: string;
 };
 
 export type StudioPreset = { id: string; family: string; archetype: string; variant: string; size: string; tags: string[]; state: Partial<MegaMenuState> & Record<string, unknown> };
@@ -138,6 +176,10 @@ export const SECTIONS: Array<{ id: SectionId; label: string }> = [
   {
     "id": "states",
     "label": "State Preview"
+  },
+  {
+    "id": "disabled",
+    "label": "Disabled"
   },
   {
     "id": "accessibility",
